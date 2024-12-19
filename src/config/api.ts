@@ -6,4 +6,7 @@ export const ENDPOINTS = {
     SIGNUP: `/api/auth/signup`,
     LOGIN: `/api/auth/login`,
   },
+  MEDIA: {
+    GETALL: `/api/media/all`,
+  },
 };

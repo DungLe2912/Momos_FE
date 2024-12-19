@@ -31,14 +31,27 @@ export default function MediaGrid({ items, type }: MediaGridProps) {
             <div className="aspect-square">
               <Image
                 src={item.mediaUrl}
-                alt={item.mediaUrl}
+                alt={item.sourceUrl}
                 width={400}
                 height={400}
                 className="w-full h-full object-cover rounded"
               />
             </div>
           )}
-          <h3 className="mt-2 font-medium text-gray-800">{type}</h3>
+          <div className="mt-2">
+            <h3
+              className="font-medium text-gray-800 truncate"
+              title={item.mediaUrl}
+            >
+              {item.mediaUrl}
+            </h3>
+            <p
+              className="text-sm text-gray-500 truncate"
+              title={item.sourceUrl}
+            >
+              {item.sourceUrl}
+            </p>
+          </div>
         </div>
       ))}
     </div>

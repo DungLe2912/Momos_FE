@@ -35,11 +35,33 @@ export interface MediaResponse {
   };
 }
 
+export interface MediaParams {
+  type: "image" | "video";
+  page?: number;
+  limit?: number;
+  search?: string;
+}
+
+export interface MediaParams {
+  type: "image" | "video";
+  page?: number;
+  search?: string;
+}
+
 export const mediaService = {
-  async getAll(type: "image" | "video", page = 1): Promise<MediaResponse> {
+  async getAll(params: MediaParams): Promise<MediaResponse> {
     try {
+      const { type, page = 1, search = "" } = params;
+      const limit = type === "image" ? 12 : 9;
+      const queryParams = new URLSearchParams();
+      queryParams.append("type", type);
+      queryParams.append("page", page.toString());
+      queryParams.append("limit", limit.toString());
+      if (search) {
+        queryParams.append("search", search);
+      }
       const response = await axiosInstance.get(
-        `${ENDPOINTS.MEDIA.GETALL}?type=${type}&page=${page}&limit=10`
+        `${ENDPOINTS.MEDIA.GETALL}?${queryParams.toString()}`
       );
       return response.data;
     } catch (error: any) {
