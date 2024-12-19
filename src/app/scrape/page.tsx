@@ -65,6 +65,7 @@ export default function ScrapePage() {
     }, 5000); // Poll every 5 seconds
 
     setPollingInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -92,6 +93,7 @@ export default function ScrapePage() {
         );
         startPolling(response.data.jobIds);
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message || "Failed to scrape URLs");
     } finally {

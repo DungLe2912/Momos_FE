@@ -50,8 +50,9 @@ export interface MediaParams {
 
 export const mediaService = {
   async getAll(params: MediaParams): Promise<MediaResponse> {
+    const { type } = params;
     try {
-      const { type, page = 1, search = "" } = params;
+      const { page = 1, search = "" } = params;
       const limit = type === "image" ? 12 : 9;
       const queryParams = new URLSearchParams();
       queryParams.append("type", type);
@@ -64,10 +65,9 @@ export const mediaService = {
         `${ENDPOINTS.MEDIA.GETALL}?${queryParams.toString()}`
       );
       return response.data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      throw new Error(
-        error.response?.data?.message || `Failed to fetch ${type}s`
-      );
+      throw new Error(error.response?.data?.message || `Failed to fetch`);
     }
   },
 };

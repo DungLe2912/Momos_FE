@@ -32,6 +32,7 @@ export default function Home() {
         search: searchTerm,
       });
       setMediaData(response);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
       console.error("Error fetching media:", err);
@@ -104,7 +105,7 @@ export default function Home() {
                       : mediaData.stats.totalVideos}
                   </span>
                   {searchTerm && (
-                    <span>Search results for: "{searchTerm}"</span>
+                    <span>Search results for: &quot;{searchTerm}&quot;</span>
                   )}
                 </div>
 

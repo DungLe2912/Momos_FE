@@ -29,9 +29,6 @@ export default function Login() {
     try {
       const result = await authService.login(formData);
 
-      // Assuming the API returns a token
-      localStorage.setItem("token", result.token);
-
       console.log("Login successful:", result);
       router.push("/"); // Redirect to dashboard after login
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -105,7 +102,7 @@ export default function Login() {
           </button>
 
           <p className="text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a
               href="/sign-up"
               className="text-blue-600 hover:text-blue-800 font-medium"

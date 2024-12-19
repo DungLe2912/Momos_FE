@@ -45,6 +45,7 @@ export default function Signup() {
 
       console.log("Registration successful:", result);
       router.push("/login"); // Redirect to login after registration
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setError(error.message || "An error occurred during registration");
     } finally {

@@ -31,7 +31,7 @@ export const authService = {
     const response = await axiosInstance.post(ENDPOINTS.AUTH.SIGNUP, data);
 
     if (response.data.success !== true) {
-      throw new Error(response.message || "Registration failed");
+      throw new Error(response.data.message || "Registration failed");
     }
 
     return response.data;
@@ -48,6 +48,7 @@ export const authService = {
       this.setUser(user);
 
       return response.data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       throw new Error(error.response?.data?.message || "Login failed");
     }

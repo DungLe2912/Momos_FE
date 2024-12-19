@@ -7,6 +7,7 @@ export interface ScrapeResponse {
     status: string;
     jobIds: string[];
     message: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     cachedResults: any[];
   };
 }
@@ -27,6 +28,7 @@ export const scrapeService = {
         urls,
       });
       return response.data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       throw new Error(
         error.response?.data?.message ||
@@ -41,6 +43,7 @@ export const scrapeService = {
         `/api/scrape/status/${jobIds.join(",")}`
       );
       return response.data;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       throw new Error(
         error.response?.data?.message || "Failed to check job status"
